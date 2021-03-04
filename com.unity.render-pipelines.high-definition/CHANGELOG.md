@@ -54,6 +54,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated the tooltip for the Decal Angle Fade property (requires to enable Decal Layers in both HDRP asset and Frame settings) (case 1308048).
 - Tidy up of platform abstraction code for shader optimization.
 - Display a warning help box when decal atlas is out of size.
+- Avoid unnecessary RenderGraphBuilder.ReadTexture in the "Set Final Target" pass
 
 ## [10.3.1] - 2020-01-26
 
@@ -142,6 +143,8 @@ The version number for this package has increased due to a version update of a r
 - Fixed Quality Level set to the last one of the list after a Build (case 1307450)
 - Fixed XR depth copy (case 1286908).
 - Fixed Warnings about "SceneIdMap" missing script in eye material sample scene
+- Fixed wizard checking FrameSettings not in HDRP Default Settings
+- Fixed error when opening the default composition graph in the Graphics Compositor (case 1318933).
 
 ### Changed
 - Now reflection probes cannot have SSAO, SSGI, SSR, ray tracing effects or volumetric reprojection.
