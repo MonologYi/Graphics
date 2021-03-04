@@ -32,7 +32,7 @@ namespace UnityEditor.Rendering.HighDefinition
         SerializedDataParameter m_Mode;
 
         // Hybrid
-        SerializedDataParameter m_MaxRayIterationsRT;
+        SerializedDataParameter m_RayMaxIterationsRT;
 
         // Performance
         SerializedDataParameter m_FullResolution;
@@ -69,10 +69,10 @@ namespace UnityEditor.Rendering.HighDefinition
             m_Mode                          = Unpack(o.Find(x => x.mode));
 
             // Hybrid
-            m_MaxRayIterationsRT            = Unpack(o.Find(x => x.rayMaxIterationsRT));
+            m_RayMaxIterationsRT            = Unpack(o.Find(x => x.rayMaxIterationsRT));
 
             // Performance
-            m_FullResolution = Unpack(o.Find(x => x.fullResolution));
+            m_FullResolution                = Unpack(o.Find(x => x.fullResolution));
 
             // Quality
             m_SampleCount                   = Unpack(o.Find(x => x.sampleCount));
@@ -135,7 +135,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 PropertyField(m_ClampValue, k_ClampValueText);
                 PropertyField(m_FullResolution, k_FullResolutionText);
                 if (hybrid)
-                    PropertyField(m_MaxRayIterationsRT);
+                    PropertyField(m_RayMaxIterationsRT);
                 PropertyField(m_Denoise, k_DenoiseText);
                 using (new HDEditorUtils.IndentScope())
                 {
@@ -256,6 +256,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 settings.Save<float>(m_RayLength);
                 settings.Save<float>(m_ClampValue);
                 settings.Save<bool>(m_FullResolution);
+                settings.Save<bool>(m_RayMaxIterationsRT);
                 settings.Save<bool>(m_Denoise);
                 settings.Save<int>(m_DenoiserRadius);
                 settings.Save<bool>(m_AffectsSmoothSurfaces);
@@ -278,6 +279,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 settings.TryLoad<float>(ref m_RayLength);
                 settings.TryLoad<float>(ref m_ClampValue);
                 settings.TryLoad<bool>(ref m_FullResolution);
+                settings.TryLoad<bool>(ref m_RayMaxIterationsRT);
                 settings.TryLoad<bool>(ref m_Denoise);
                 settings.TryLoad<int>(ref m_DenoiserRadius);
                 settings.TryLoad<bool>(ref m_AffectsSmoothSurfaces);
@@ -298,6 +300,7 @@ namespace UnityEditor.Rendering.HighDefinition
                 CopySetting(ref m_RayLength, settings.lightingQualitySettings.RTRRayLength[level]);
                 CopySetting(ref m_ClampValue, settings.lightingQualitySettings.RTRClampValue[level]);
                 CopySetting(ref m_FullResolution, settings.lightingQualitySettings.RTRFullResolution[level]);
+                CopySetting(ref m_RayMaxIterationsRT, settings.lightingQualitySettings.RTRRayMaxIterations[level]);
                 CopySetting(ref m_Denoise, settings.lightingQualitySettings.RTRDenoise[level]);
                 CopySetting(ref m_DenoiserRadius, settings.lightingQualitySettings.RTRDenoiserRadius[level]);
                 CopySetting(ref m_AffectsSmoothSurfaces, settings.lightingQualitySettings.RTRSmoothDenoising[level]);
