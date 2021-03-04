@@ -34,7 +34,7 @@ namespace UnityEngine.Rendering.HighDefinition
             Sparse,
             Cloudy,
             Overcast,
-            StormClouds,
+            Stormy,
             Custom
         }
 
