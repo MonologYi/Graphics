@@ -104,7 +104,7 @@ namespace UnityEngine.Rendering.HighDefinition
 
         // The size of the cloud dome in kilometers around the center of the world
         [Tooltip("Controls the curvature of the cloud volume which defines the distance at which the clouds intersect with the horizon.")]
-        public ClampedFloatParameter earthCurvature = new ClampedFloatParameter(0.5f, 0.0f, 1.0f);
+        public ClampedFloatParameter earthCurvature = new ClampedFloatParameter(0.0f, 0.0f, 1.0f);
 
         [Tooltip("Tiling (x,y) of the cloud map")]
         public Vector2Parameter cloudTiling = new Vector2Parameter(new Vector2(1.0f, 1.0f));
@@ -112,11 +112,11 @@ namespace UnityEngine.Rendering.HighDefinition
         [Tooltip("Offset (x,y) of the cloud map")]
         public Vector2Parameter cloudOffset = new Vector2Parameter(new Vector2(0.0f, 0.0f));
 
-        [Tooltip("Controls the altitude the cloud volume starts at.")]
-        public MinFloatParameter lowestCloudAltitude = new MinFloatParameter(500, 0.01f);
+        [Tooltip("Controls the altitude of the bottom of the volumetric clouds volume in meters.")]
+        public MinFloatParameter lowestCloudAltitude = new MinFloatParameter(1000, 0.01f);
 
         [Tooltip("Controls the thickness of the volumetric clouds volume in meters.")]
-        public MinFloatParameter cloudThickness = new MinFloatParameter(3000.0f, 100.0f);
+        public MinFloatParameter cloudThickness = new MinFloatParameter(6000.0f, 100.0f);
 
         [Tooltip("Controls the number of steps when evaluating the clouds' transmittance.")]
         public ClampedIntParameter numPrimarySteps = new ClampedIntParameter(48, 16, 512);
@@ -191,7 +191,7 @@ namespace UnityEngine.Rendering.HighDefinition
         public ClampedFloatParameter ambientLightProbeDimmer = new ClampedFloatParameter(1.0f, 0.0f, 1.0f);
 
         [Tooltip("Sets the global wind speed in kilometers per hour.")]
-        public MinFloatParameter globalWindSpeed = new MinFloatParameter(50.0f, 0.0f);
+        public MinFloatParameter globalWindSpeed = new MinFloatParameter(100.0f, 0.0f);
 
         [Tooltip("Controls the orientation of the wind relative to the X world vector.")]
         [AdditionalProperty]
@@ -218,7 +218,7 @@ namespace UnityEngine.Rendering.HighDefinition
         [Tooltip("Specifies the resolution of the volumetric clouds shadow map.")]
         public CloudShadowResolutionParameter shadowResolution = new CloudShadowResolutionParameter(CloudShadowResolution.Medium256);
 
-        [Tooltip("Controls the vertical offset applied to compute the volumetric clouds shadow. To have accurate results, enter the average height at which the volumetric clouds shadow is received.")]
+        [Tooltip("Controls the vertical offset applied to compute the volumetric clouds shadow in meters. To have accurate results, enter the average height at which the volumetric clouds shadow is received.")]
         [AdditionalProperty]
         public FloatParameter shadowPlaneHeightOffset = new FloatParameter(0.0f);
 
